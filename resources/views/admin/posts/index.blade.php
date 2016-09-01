@@ -46,7 +46,14 @@
                         <td>
                             <a href="{{ route('admin.posts.edit', $post->id) }}">編輯</a>
                             /
-                            <a href="#">刪除</a>
+                            <a href="#">
+                                {{Form::open(['route'=>['admin.posts.destroy',$post->id], 'method'=>'DELETE'])}}
+
+                                {{Form::submit('刪除', ['class'=>'btn btn-link'])}}
+
+                                {{Form::close()}}
+
+                            </a>
                         </td>
                     </tr>
                 @endforeach
