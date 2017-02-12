@@ -27,13 +27,13 @@
             <div class="post-preview">
                 <a href="{{ route('posts.show', $post->id) }}">
                     <h2 class="post-title">
-                        Post {{ $post->title }}
+                        {{ $post->id }}. {{ $post->title }}
                     </h2>
                     <h3 class="post-subtitle">
                         Subtitle
                     </h3>
                 </a>
-                <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on September 24, 2014</p>
+                <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on {{ $post->created_at }}</p>
             </div>
             <hr>
             @endforeach

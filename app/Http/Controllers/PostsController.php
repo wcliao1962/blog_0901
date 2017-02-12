@@ -5,17 +5,22 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Post;
 
 class PostsController extends Controller
 {
     public function index()
     {
-        return view('posts.index');
+        $posts=Post::orderBy('created_at', 'DESC')->get();
+        $data=['posts'=>$posts];
+        return view('posts.index', $data);
     }
 
     public function show($id)
     {
-        $data = ['id' => $id];
+        $post=Post::find($id);
+        $data=['post'=>$post];
+        //$data = ['id' => $id];
 
         return view('posts.show', $data);
     }
