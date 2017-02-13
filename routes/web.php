@@ -11,9 +11,11 @@
 |
 */
 
-Route::get('/'         , ['as' => 'home.index' , 'uses' => 'HomeController@index']);
-Route::get('posts'     , ['as' => 'posts.index', 'uses' => 'PostsController@index']);
-Route::get('posts/{id}', ['as' => 'posts.show' , 'uses' => 'PostsController@show']);
+Route::get('/'                   , ['as' => 'home.index' , 'uses' => 'HomeController@index']);
+Route::get('posts'               , ['as' => 'posts.index', 'uses' => 'PostsController@index']);
+Route::get('posts/{id}'          , ['as' => 'posts.show' , 'uses' => 'PostsController@show']);
+Route::post('posts/{id}/comments', ['as' => 'posts.comments.store' , 'uses' => 'CommentsController@store']);
+
 
 // 後台
 Route::group(['prefix' => 'admin'], function() {
@@ -27,3 +29,4 @@ Route::group(['prefix' => 'admin'], function() {
     Route::delete('posts/{id}'  , ['as' => 'admin.posts.destroy','uses' => 'AdminPostsController@destroy']);
 
 });
+

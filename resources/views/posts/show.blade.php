@@ -31,6 +31,33 @@
 </article>
 
 
+<div class="panel-body">
+    <!-- 顯示驗證錯誤 -->
+@include('errors.errors')
+
+<!-- 新comment的表單 -->
+    <form action="/posts/{{$post->id}}/comments" method="POST" class="form-horizontal">
+    {{ csrf_field() }}
+
+    <!-- 任務名稱 -->
+        <div class="form-group">
+            <label for="task-name" class="col-sm-3 control-label">評論</label>
+
+            <div class="col-sm-6">
+                <input type="text" name="title" id="title" class="form-control">
+            </div>
+        </div>
+
+        <!-- 增加按鈕-->
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-6">
+                <button type="submit" class="btn btn-default">
+                    <i class="fa fa-plus"></i> 增加評論
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
 
 <!-- Post Comments -->
 @foreach($comments as $comment)
@@ -39,9 +66,10 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="comment-preview">
-                            <h2 class="post-title">
-                                {{ $comment->id }}. {{ $comment->title }}
-                            </h2>
+                        <h2 class="post-title">
+                            {{ $comment->id }}. {{ $comment->title }}
+                        </h2>
+
                         <p class="post-meta">commented by <a href="#">Start Bootstrap</a> on {{ $comment->created_at }}</p>
                     </div>
                     <hr>
