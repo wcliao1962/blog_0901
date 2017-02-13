@@ -19,7 +19,7 @@ class PostsController extends Controller
     public function show($id)
     {
         $post=Post::find($id);
-        $data=['post'=>$post];
+        $data=['post'=>$post, 'comments'=>$post->comments];
         //$data = ['id' => $id];
 
         return view('posts.show', $data);
