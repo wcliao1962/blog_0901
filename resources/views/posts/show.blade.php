@@ -69,8 +69,14 @@
                         <h2 class="post-title">
                             {{ $comment->id }}. {{ $comment->title }}
                         </h2>
-
                         <p class="post-meta">commented by <a href="#">Start Bootstrap</a> on {{ $comment->created_at }}</p>
+                        <form action="/posts/{{$post->id }}/comments/{{$comment->id }}" method="POST">
+                            {{ csrf_field() }}
+                            {{ method_field('DELETE') }}
+
+                            <button>刪除</button>
+                        </form>
+
                     </div>
                     <hr>
             </div>

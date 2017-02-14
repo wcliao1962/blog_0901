@@ -21,4 +21,21 @@ class CommentsController extends Controller
         //return redirect()->route('posts.show',$post_id);
         return redirect('/posts/'.$post_id);
     }
+
+    /**
+     * 移除給定的評論。
+     *
+     * @param  Request  $request
+     * @param  Task  $task
+     * @return Response
+     */
+    public function destroy($post_id, $comment_id)
+    {
+        //$this->authorize('destroy', $comment);
+
+        //$comment->delete();
+
+        Comment::destroy($comment_id);
+        return redirect()->route('posts.show',$post_id);
+    }
 }

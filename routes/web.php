@@ -13,9 +13,9 @@
 
 Route::get('/'                   , ['as' => 'home.index' , 'uses' => 'HomeController@index']);
 Route::get('posts'               , ['as' => 'posts.index', 'uses' => 'PostsController@index']);
-Route::get('posts/{id}'          , ['as' => 'posts.show' , 'uses' => 'PostsController@show']);
-Route::post('posts/{id}/comments', ['as' => 'posts.comments.store' , 'uses' => 'CommentsController@store']);
-
+Route::get('posts/{pid}'          , ['as' => 'posts.show' , 'uses' => 'PostsController@show']);
+Route::post('posts/{pid}/comments', ['as' => 'posts.comments.store' , 'uses' => 'CommentsController@store']);
+Route::delete('posts/{pid}/comments/{cid}', ['as' => 'posts.comments.destroy','uses' => 'CommentsController@destroy']);
 
 // 後台
 Route::group(['prefix' => 'admin'], function() {
