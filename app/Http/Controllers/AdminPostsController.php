@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PostRequest;
 use App\Post;
+use App\Comment;
 
 
 class AdminPostsController extends Controller
@@ -49,6 +50,13 @@ class AdminPostsController extends Controller
 
     public function destroy($id)
     {
+//        $post=Post::find($id);
+//        $comments=$post->comments;
+//        foreach($comments as $comment)
+//        {
+//           Comment::destroy($comment->id);
+//        }
+        Comment::where('post_id', '=', $id)->delete();
         Post::destroy($id);
         return redirect()->route('admin.posts.index');
     }
